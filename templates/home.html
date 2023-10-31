@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to the Online Learning Platform</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+  <style>
+    /* Reset some default margin and padding */
+    body, h1, h2, h3, p {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Set a background color for the entire page */
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+        font-family: Arial, sans-serif;
+    }
+
+    /* Style the heading at the top */
+    .advanced-heading {
+        text-align: center;
+        background-color: #007BFF; /* Blue background for the heading */
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 15px;
+        color: #fff; /* White text color */
+    }
+
+    /* Style the card container */
+    .container {
+        margin-top: 20px;
+    }
+
+    /* Style the row for cards */
+    .card-row {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Style the cards */
+    .card {
+        border: none;
+        border-radius: 15px;
+        background-color: #ffffff; /* White background for cards */
+        transition: transform 0.2s;
+        margin: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to cards */
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    }
+
+    /* Style card images */
+    .card-img-top {
+        max-width: 100%;
+        height: auto;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    /* Style the card titles */
+    .card-title {
+        text-align: center;
+        font-size: 24px; /* Adjust the font size */
+        padding: 15px 0;
+        color: #333; /* Dark gray text color */
+    }
+
+    /* Set a fixed height for the card body */
+    .card-body {
+        height: 250px; /* Adjust the height as needed */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px; /* Add some padding to the card body */
+    }
+
+    /* Style the "Sign Up" button */
+    .btn-primary {
+        background-color: #0056b3; /* Darker blue button color */
+        color: #fff; /* White text color */
+        border: none;
+        border-radius: 0; /* Remove button border radius */
+        transition: background-color 0.3s; /* Smooth button hover transition */
+        padding: 10px 20px; /* Add some padding to the button */
+        font-size: 18px; /* Increase button font size */
+    }
+
+    .btn-primary:hover {
+        background-color: #004292; /* Slightly darker blue on hover */
+    }
+
+    /* Style the "Login" buttons */
+    .btn-success {
+        background-color: #28a745; /* Green button color */
+        color: #fff; /* White text color */
+        border: none;
+        border-radius: 0; /* Remove button border radius */
+        transition: background-color 0.3s; /* Smooth button hover transition */
+        padding: 10px 20px; /* Add some padding to the button */
+        font-size: 18px; /* Increase button font size */
+    }
+
+    .btn-info {
+        background-color: #17a2b8; /* Turquoise button color */
+        color: #fff; /* White text color */
+        border: none;
+        border-radius: 0; /* Remove button border radius */
+        transition: background-color 0.3s; /* Smooth button hover transition */
+        padding: 10px 20px; /* Add some padding to the button */
+        font-size: 18px; /* Increase button font size */
+    }
+
+    footer {
+    background-color: #007BFF; /* Blue background for the footer */
+    color: #fff; /* White text color */
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px; /* Add rounded corners to the footer */
+}
+
+</style>
+
+
+    </style>
+
+</head>
+
+<body>
+    <!-- "Welcome to the Online Learning Platform" heading outside of cards -->
+    <div class="container mt-4">
+        <div class="advanced-heading">
+            <h2 class="text-center font-weight-bold">Welcome to the Online Learning Platform</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card-row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://thumbs.dreamstime.com/z/registration-hand-pressing-button-interface-blue-background-49410297.jpg?w=2048"
+                        class="card-img-top" alt="Sign Up">
+                    <div class="card-body">
+                        <h3 class="card-title">Sign Up</h3>
+                        <p>Congratulations, you've taken the first step towards a world of endless learning opportunities by signing up as a teacher or student!</p>
+                        <a href="{{ url_for('signup') }}" class="btn btn-primary btn-block">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://img.freepik.com/free-vector/hand-drawn-flat-teachers-day-landing-page-template_23-2149063431.jpg?w=1380&t=st=1698752949~exp=1698753549~hmac=4872f7f3d6d407328f6b299d5dcad6ae38ddf769f98b329064aef558da892338"
+                        class="card-img-top mx-auto d-block" alt="Teacher Login" style="width: 300px; height: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Teacher Login</h3>
+                        <p>Welcome back, educators! Empowering minds one login at a time</p>
+                        <a href="{{ url_for('teacher_login') }}" class="btn btn-success btn-block">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.shutterstock.com/shutterstock/photos/2022285842/display_1500/stock-vector-students-raising-their-hands-on-white-background-illustration-2022285842.jpg"
+                        class="card-img-top mx-auto d-block" alt="Student Login" style="width: 300px; height: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Student Login</h3>
+                        <p>Unlock your learning journey with a single click. Welcome, students!</p>
+                        <a href="{{ url_for('student_login') }}" class="btn btn-info btn-block">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2023 Abhishek Kurne. All rights reserved.
+    </footer>
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

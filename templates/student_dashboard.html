@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=Ae7Neo5t6vme94mczZdT4ZS1lDbGGyWfp4pLGtBIOxHijmLnc8l3UMbSNnlIDdNZhHJJIPaejCKx-ai1&currency=USD"></script>
+    <style>
+               body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .container {
+            flex-grow: 1;
+            margin-top: 20px;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-title {
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .course-description {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .course-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subscribe-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .subscribe-button:hover {
+            background-color: #0056b3;
+        }
+
+        .student-courses {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .student-course-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .student-course-link {
+            font-size: 16px;
+            color: #007BFF;
+            text-decoration: none;
+            margin-bottom: 5px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .student-course-link:hover {
+            color: #0056b3;
+        }
+
+        .footer {
+
+            background: linear-gradient(135deg, #4B79A1, #283E51);
+            padding: 20px;
+            text-align: center;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Online Learning Platform</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('subscribe') }}">subscribed</a></li>
+                <li><a href="{{ url_for('home') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Add a search bar to search for courses -->
+        <input type="text" class="search-bar" placeholder="Search for courses..." oninput="searchCourses(this.value)">
+
+        <!-- Display available courses -->
+        <div class="course-card">
+            <div class="course-title">PYTHON COURSE</div>
+            <div class="course-description">
+               "A Python course is like a guided journey to learn how to use the Python programming language. Python is a type of computer language that helps people give instructions to computers in an easy and understandable way. In the course, you'll start by learning the basics, like how to tell the computer to do simple tasks. As you go further, you'll discover how to solve more complex problems and create useful programs. It's like learning a new language, but this one is for talking to computers and making them do cool things!"
+            </div>
+
+            <button class="btn btn-secondary subscribe-button" onclick="initiatePayPalPayment(1, 'C Programming', 0.00)"
+                disabled>Enroll</button>
+        </div>
+
+        <!-- Repeat similar structure for other courses -->
+        <div class="course-card" data-course-id="2">
+            <div class="course-title" onclick="toggleCourseInfo(2)">WEB DEVELOPMENT</div>
+            <div class="course-description">
+                <span id="description-2">Web development is like building and designing things on the internet. It's the process of creating websites and web applications that you can see and interact with on your computer, phone, or tablet. Web developers use special languages and tools to make these online things work and look good. They decide how a website should look, what it should do when you click on buttons, and how information is shown. It's like being an architect and builder, but for the digital world of the internet.</span>
+            </div>
+            <div class="course-price">
+                <span id="price-3">$59.99</span>
+            </div>
+
+            <button class="subscribe-button"
+            onclick="startNpm()">Enroll</button>
+
+
+
+        </div>
+        <!----  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="JWEBTC8TJYE3U" />
+                <input type="hidden" name="currency_code" value="USD" />
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Subscribe" />
+              </form> --->
+
+        <div class="course-card" data-course-id="3">
+            <div class="course-title" onclick="toggleCourseInfo(3)">GAME DEVELOPMENT</div>
+            <div class="course-description">
+                <span id="description-3">
+A game development course teaches you how to make your own video games. You'll learn how to create characters, design levels, and make the rules of the game. It's like becoming a game designer and builder. You'll use computer programs to bring your game ideas to life, and by the end of the course, you'll have the skills to create fun and interactive games that people can play on their computers, phones, or game consoles. It's a course for those who love gaming and want to create their own gaming adventures..</span>
+            </div>
+            <div class="course-price">
+                <span id="price-3">$59.99</span>
+            </div>
+
+                <button class="subscribe-button"
+                onclick="startNpm()">Enroll</button>
+
+        </div>
+
+        <!-- Add more courses as needed -->
+
+        <!-- Display subscribed courses -->
+        <div class="student-courses" id="student-courses">
+            <div class="student-course-title">Subscribed Courses:</div>
+            <!-- Add subscribed course links dynamically -->
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        &copy; 2023 Abhishek Kurne. All rights reserved.
+    </div>
+
+    <script>
+        // JavaScript code for the student dashboard
+        function toggleCourseInfo(courseId) {
+            const courseDescription = document.getElementById(`description-${courseId}`);
+            courseDescription.style.display = courseDescription.style.display === 'none' ? 'block' : 'none';
+        }
+
+
+
+        function initiatePayPalPayment(courseId, courseName, price) {
+            paypal.Buttons({
+                createOrder: function (data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            description: courseName,
+                            amount: {
+                                value: price,
+                            },
+                        }],
+                    });
+                },
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (details) {
+                        // Payment successful; you can handle the subscription logic here
+                        alert('Payment completed for ' + courseName + '!'); // Replace with your logic
+                    });
+                },
+            }).render('#paypal-button-container');
+        }
+
+        function subscribeCourse(courseId) {
+            const courseCard = document.querySelector(`.course-card[data-course-id="${courseId}"]`);
+            if (courseCard) {
+                courseCard.style.display = 'none';
+
+                // Add the subscribed course link to the student's list of courses
+                const subscribedCourses = document.getElementById('student-courses');
+                const courseTitle = document.querySelector(`.course-card[data-course-id="${courseId}"] .course-title`);
+                const courseLink = document.createElement('a');
+                courseLink.href = '#'; // Add the actual course link here
+                courseLink.textContent = courseTitle.textContent;
+                courseLink.className = 'student-course-link';
+                subscribedCourses.appendChild(courseLink);
+            }
+        }
+
+        function searchCourses(query) {
+            const courseCards = document.querySelectorAll('.course-card');
+            for (const card of courseCards) {
+                const courseTitle = card.querySelector('.course-title');
+                if (courseTitle.textContent.toLowerCase().includes(query.toLowerCase())) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        }
+
+
+
+
+        function startNpm() {
+            window.location.href = "http://localhost:8888";
+            fetch('/start-npm', { method: 'GET' })
+                .then(response => {
+                    if (response.status === 200) {
+                        console.log('npm start initiated.');
+                        // Only change the window location if npm start was successful.
+
+
+
+
+                    } else {
+                        console.error('Failed to initiate npm start.');
+                    }
+                });
+        }
+
+
+
+
+        function redirectToPayPal() {
+            // Construct the URL with query parameters
+            const url = `/http://localhost:8888/`;
+
+            // Redirect the user to the PayPal integration folder
+            window.location.href = url;
+        }
+        n
+
+    </script>
+</body>
+
+</html>
