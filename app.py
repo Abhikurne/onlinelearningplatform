@@ -122,7 +122,7 @@ def send_otp_email(to_email, otp):
     server.starttls()
     
     # Replace with your email and password
-    server.login('abhishekkurne123@gmail.com', 'vbdl ezme ylvq vvxz')
+    server.login('abhishekkurne123@gmail.com', '#add ur apppswrd')
     server.sendmail('abhishekkurne@gmail.com', to_email, msg.as_string())
     server.quit()
 
